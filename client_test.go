@@ -275,7 +275,7 @@ func TestExpirationHeader(t *testing.T) {
 		assert.Equal(t, n.CollapseID, r.Header.Get("apns-collapse-id"))
 		assert.Equal(t, "10", r.Header.Get("apns-priority"))
 		assert.Equal(t, n.Topic, r.Header.Get("apns-topic"))
-		assert.Equal(t, "", r.Header.Get("apns-expiration"))
+		assert.Equal(t, "0", r.Header.Get("apns-expiration"))
 	}))
 	defer server.Close()
 	_, err := mockClient(server.URL).Push(n)
